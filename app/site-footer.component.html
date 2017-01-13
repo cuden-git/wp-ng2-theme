@@ -1,0 +1,25 @@
+<div class="container">
+	<ul class="inlineBList">
+		<li><!-- <img src="images/logo_credits.gif" class="img-responsive" alt="Corgi approved"> --></li>
+		<li>
+			<a href="#" title="Facebook" class="fIcon-fb"></a>
+		</li>
+		<li>
+			<a href="#" title="Twitter" class="fIcon-twitter"></a>
+		</li>
+	</ul>
+	<p class="address">
+		{{_siteVars._varsObj.address}}
+		 <a href="tel:{{_siteVars._varsObj.tel}}" class="tel" title="Telephone number"><span class="fIcon-phone"></span> {{_siteVars._varsObj.tel}}</a>
+		<a href="#" data-toggle="expand" data-target="#footer .expand" data-toggle-label="Directions-close Directions-closed" title="Directions">Directions</a>
+	</p>
+
+	<div class="expand">
+		<div id="mapDirections">
+			<a href="#" class="btnClose" title="Close">Close X</a>
+		</div>
+		<div id="mapCanvas">
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+<ul id="mainNav">
+    <li *ngFor="let item of navItems; let i = index">
+      <a routerLink="/{{item.top.slug}}" title="{{item.top.title}}{{i}}">{{item.top.title}}{{i}}</a>
+     <!-- <a [routerLink]="[item.top.slug,item.top.post_id]" title="{{item.top.title}}{{i}}">{{item.top.title}}{{i}}</a>-->
+       <div class="dropDown" *ngIf="item.subNav || item.customNav">
+           <div *ngIf="item.navImg" class="col-xs-12 hidden-xs imgCell">
+               <img src="{{item.navImg.src}}" alt="{{item.navImg.alt}}">
+               </div>
+            <ul *ngIf="item.subNav">
+                <li *ngFor="let subItem of item.subNav">{{subItem.title}}</li>
+            </ul>
+            <ul *ngIf="item.customNav">
+                <li *ngFor="let subItem of item.customNav">{{subItem.title}}</li>
+            </ul>
+       </div>
+    </li>
+</ul>
+</div>
