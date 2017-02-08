@@ -46,7 +46,7 @@ var AppModule = (function () {
                     useFactory: function (config, siteNav) {
                         return function () {
                             return config.getVars(),
-                                siteNav.getNav();
+                                siteNav.getNav() /**/;
                         };
                     },
                     deps: [site_vars_service_1.SiteVarsService, site_nav_service_1.SiteNavService],

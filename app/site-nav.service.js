@@ -28,16 +28,21 @@ var SiteNavService = (function () {
     SiteNavService.prototype.getNav = function () {
         var _this = this;
         alert('getNav()');
-        return this._http.get(this._navUrl)
-            .map(function (res) {
-            console.log(res.json());
-            _this.siteNav = res.json();
-            alert('getNav() within promise');
-            alert('this.siteNav.length = ' + _this.siteNav.length);
-            //   this.createRoutes();
-            return res.json();
-        })
-            .toPromise();
+        if (this.siteNav.isEmpty()) {
+            return this._http.get(this._navUrl)
+                .map(function (res) {
+                console.log(res.json());
+                _this.siteNav = res.json();
+                alert('getNav() within promise');
+                alert('this.siteNav.length = ' + _this.siteNav.length);
+                //   this.createRoutes();
+                return res.json();
+            })
+                .toPromise();
+        }
+        else {
+            return Rx_1.Observable.of(this.siteNav).toPromise();
+        }
     };
     SiteNavService.prototype.createRoutes = function () {
         alert("createRoutes() method form SiteNavService");

@@ -30,9 +30,8 @@ import { RightColComponent} from './right-col.component';
         provide: APP_INITIALIZER,
         useFactory: (config: SiteVarsService,siteNav: SiteNavService) => {
          return function(){
-           
             return config.getVars(),
-            siteNav.getNav();
+              siteNav.getNav()/**/;
           }
         },
         deps: [SiteVarsService,SiteNavService],

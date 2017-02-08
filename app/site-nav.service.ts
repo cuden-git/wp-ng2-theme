@@ -25,14 +25,20 @@ export class SiteNavService{
 
     getNav(){
         alert('getNav()');
-        return this._http.get(this._navUrl)
-        .map( res => { console.log(res.json());
-            this.siteNav = res.json();
-            alert('getNav() within promise');
-            alert('this.siteNav.length = ' + this.siteNav.length);
-         //   this.createRoutes();
-            return res.json() })
-        .toPromise();
+        if(this.siteNav.isEmpty()){
+            return this._http.get(this._navUrl)
+            .map( res => {
+                console.log(res.json());
+                this.siteNav = res.json();
+                alert('getNav() within promise');
+                alert('this.siteNav.length = ' + this.siteNav.length);
+            //   this.createRoutes();
+                return res.json() })
+            .toPromise();
+        }else{
+            return Observable.of(this.siteNav).toPromise();
+        }
+
     }
     createRoutes(){
      alert("createRoutes() method form SiteNavService");
