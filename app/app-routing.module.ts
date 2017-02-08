@@ -1,8 +1,8 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule, APP_INITIALIZER, OnInit } from '@angular/core';
+import { RouterModule, Routes, Router } from '@angular/router';
 //import { Http } from '@angular/http';
-//import { SiteNavService } from './site-nav.service';
-//import { getRoutes } from './site-routes';
+import { SiteNavService } from './site-nav.service';
+import { GetRoutes } from './site-routes';
 
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
     component: NotFoundComponent
   }
 ];
-
+// new GetRoutes.showRoutes();
 console.log('const routes = ');
 console.log(routes);
 
@@ -46,13 +46,54 @@ console.log(routes);
     exports: [RouterModule]
 })
 
-export class AppRouting{
-    constructor(){
-      alert('const');
+export class AppRouting implements OnInit{
+// routes
+//   {
+//   path: 'projects',
+//   component: HomeComponent
+//   };
+    lateRoutes;
+    constructor(private router: Router, private siteNav: SiteNavService){
+      alert('AppRouting');
+     this.siteNav.getNav()
+     .then(
+       (data) => { 
+         alert('data = ' + data);
+         this.lateRoutes = this.siteNav.createRoutes()
+         .then(
+            (data) => { this.router.resetConfig(data.concat(routes)); }
+         );
+        
+       }
+     );
+      // this.lateRoutes = this.siteNav.createRoutes()
+      // .then( 
+      //   data => {
+      //       alert('Approuting Promise = ' + data);
+      //           // console.log('from app routing moduleross = ');
+      //           // console.log(this.lateRoutes.concat(routes));
+      //           // console.log("this.siteNav.siteRoutes");
+      //           // console.log(this.siteNav.siteRoutes);
+      //           //this.router.resetConfig(data.concat(routes));
+      //   }
+      // );
+    // this.lateRoutes = this.siteNav.createRoutes();
+      
+      //this.siteNav.siteRoutes;
+      // this.lateRoutes = [{
+      //   path: 'projects',
+      //   component: HomeComponent
+      // }];
+     // alert("this.lateRoutes = " + this.lateRoutes + " / this.siteNav.siteRoutes = " + this.siteNav.siteRoutes);
+
+      
     }
   
     // routes: Routes;
     // constructor(private _navService: SiteNavService){
     //     this.routes = this._navService.prepareNav();
     // }
+    ngOnInit(){
+      // alert('nng on init');
+    }
 }

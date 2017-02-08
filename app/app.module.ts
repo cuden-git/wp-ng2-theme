@@ -17,7 +17,7 @@ import { ServicesComponent } from './services.component';
 import { NotFoundComponent } from './not-found.component';
 import { AppRouting } from './app-routing.module';
 import { RightColComponent} from './right-col.component';
-
+//import { Reflect } from '../node_modules/reflect-metadata/Reflect';
 @NgModule({
   imports:      [ 
       BrowserModule,
@@ -28,9 +28,11 @@ import { RightColComponent} from './right-col.component';
   declarations: [ AppComponent, SiteHeaderComponent, SiteNavComponent, SiteFooterComponent, /*HomeComponent,*/ NotFoundComponent, ServicesComponent, RightColComponent ],
   providers: [ SiteNavService, SiteVarsService,PostService,{
         provide: APP_INITIALIZER,
-        useFactory: (config: SiteVarsService,siteNav: SiteNavService) => { 
+        useFactory: (config: SiteVarsService,siteNav: SiteNavService) => {
          return function(){
-           return config.getVars(), siteNav.getNav();
+           
+            return config.getVars(),
+            siteNav.getNav();
           }
         },
         deps: [SiteVarsService,SiteNavService],
@@ -39,13 +41,12 @@ import { RightColComponent} from './right-col.component';
     /*exports: [RightColComponent],*/
   bootstrap:    [ AppComponent ]
 })
-export class AppModule { } 
+export class AppModule {
+    constructor(){
+      alert('AppModule');
+      console.log('from app module yeah');
+      console.log(Reflect);
+      console.log('here my dear');
 
-// useFactory: (config: SiteVarsService,siteNav: SiteNavService) => () => {config.getVars();siteNav.getNav()}
-
-// function (config: SiteVarsService,siteNav: SiteNavService) { 
-//   function(){
-//     config.getVars();
-//     siteNav.getNav();
-//   }
-// }
+    }
+ } 

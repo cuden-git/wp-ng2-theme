@@ -26,7 +26,6 @@ var SiteHeaderComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: '#header',
-            /*templateUrl: wpJsVars.sitePath+'/app/site-header.component.html'*/
             templateUrl: "site-header.component.html?v=" + new Date().getTime()
         }), 
         __metadata('design:paramtypes', [site_vars_service_1.SiteVarsService])

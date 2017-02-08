@@ -24,8 +24,13 @@ var services_component_1 = require('./services.component');
 var not_found_component_1 = require('./not-found.component');
 var app_routing_module_1 = require('./app-routing.module');
 var right_col_component_1 = require('./right-col.component');
+//import { Reflect } from '../node_modules/reflect-metadata/Reflect';
 var AppModule = (function () {
     function AppModule() {
+        alert('AppModule');
+        console.log('from app module yeah');
+        console.log(Reflect);
+        console.log('here my dear');
     }
     AppModule = __decorate([
         core_1.NgModule({
@@ -40,7 +45,8 @@ var AppModule = (function () {
                     provide: core_1.APP_INITIALIZER,
                     useFactory: function (config, siteNav) {
                         return function () {
-                            return config.getVars(), siteNav.getNav();
+                            return config.getVars(),
+                                siteNav.getNav();
                         };
                     },
                     deps: [site_vars_service_1.SiteVarsService, site_nav_service_1.SiteNavService],
@@ -54,11 +60,4 @@ var AppModule = (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
-// useFactory: (config: SiteVarsService,siteNav: SiteNavService) => () => {config.getVars();siteNav.getNav()}
-// function (config: SiteVarsService,siteNav: SiteNavService) { 
-//   function(){
-//     config.getVars();
-//     siteNav.getNav();
-//   }
-// } 
 //# sourceMappingURL=app.module.js.map

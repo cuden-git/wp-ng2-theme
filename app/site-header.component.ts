@@ -5,7 +5,6 @@ import { SiteVarsService } from './site-vars.service';
 @Component({
     moduleId: module.id,
     selector: '#header',
-    /*templateUrl: wpJsVars.sitePath+'/app/site-header.component.html'*/
     templateUrl: `site-header.component.html?v=${new Date().getTime()}`
 })
 export class SiteHeaderComponent implements OnInit{
