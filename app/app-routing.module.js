@@ -42,7 +42,7 @@ var AppRouting = (function () {
         var _this = this;
         this.router = router;
         this.siteNav = siteNav;
-        alert('AppRouting');
+        // alert('AppRouting');
         this.siteNav.getNav()
             .then(function (data) {
             alert('data = ' + data);

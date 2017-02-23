@@ -37,12 +37,13 @@ import { RightColComponent} from './right-col.component';
         deps: [SiteVarsService,SiteNavService],
         multi: true
     } ],
+    //exports: [ServicesComponent],
     /*exports: [RightColComponent],*/
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {
     constructor(){
-      alert('AppModule');
+     // alert('AppModule');
       console.log('from app module yeah');
       console.log(Reflect);
       console.log('here my dear');

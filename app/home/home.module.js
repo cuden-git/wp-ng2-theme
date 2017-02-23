@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var home_component_1 = require('./home.component');
-//import { RightColComponent } from '../right-col.component';
 var HomeModule = (function () {
     function HomeModule() {
     }

@@ -54,7 +54,7 @@ export class AppRouting implements OnInit{
 //   };
     lateRoutes;
     constructor(private router: Router, private siteNav: SiteNavService){
-      alert('AppRouting');
+     // alert('AppRouting');
      this.siteNav.getNav()
      .then(
        (data) => { 

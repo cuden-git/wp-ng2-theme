@@ -27,7 +27,7 @@ var right_col_component_1 = require('./right-col.component');
 //import { Reflect } from '../node_modules/reflect-metadata/Reflect';
 var AppModule = (function () {
     function AppModule() {
-        alert('AppModule');
+        // alert('AppModule');
         console.log('from app module yeah');
         console.log(Reflect);
         console.log('here my dear');
@@ -52,6 +52,7 @@ var AppModule = (function () {
                     deps: [site_vars_service_1.SiteVarsService, site_nav_service_1.SiteNavService],
                     multi: true
                 }],
+            //exports: [ServicesComponent],
             /*exports: [RightColComponent],*/
             bootstrap: [app_component_1.AppComponent]
         }), 
