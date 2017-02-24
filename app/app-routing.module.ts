@@ -58,7 +58,7 @@ export class AppRouting implements OnInit{
      this.siteNav.getNav()
      .then(
        (data) => { 
-         alert('data = ' + data);
+       //  alert('data = ' + data);
          this.lateRoutes = this.siteNav.createRoutes()
          .then(
             (data) => { this.router.resetConfig(data.concat(routes)); }

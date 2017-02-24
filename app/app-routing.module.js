@@ -45,7 +45,7 @@ var AppRouting = (function () {
         // alert('AppRouting');
         this.siteNav.getNav()
             .then(function (data) {
-            alert('data = ' + data);
+            //  alert('data = ' + data);
             _this.lateRoutes = _this.siteNav.createRoutes()
                 .then(function (data) { _this.router.resetConfig(data.concat(routes)); });
         });

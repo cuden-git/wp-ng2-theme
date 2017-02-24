@@ -17,17 +17,19 @@ export class SiteNavService{
    // private _navUrl = "http://jsonplaceholder.typicode.com/posts";//wpJsVars.ajaxUrl+'?action=ajax_site_nav';
     siteNav;
     siteRoutes: Array;
+    componentsArr: Array;
+
    constructor(private _http: Http){
    //    alert('SiteNavService');
        this.siteRoutes = ['bolo-balie'];
        this.siteNav = {};
+       this.componentsArr = [];
+       this.getAllComponents();
    }
 
     getNav(){
      //   alert('getNav()');
-     function isBigEnough(element) {
-  return element >= 15;
-}
+
 
    // alert([12,5,8,130,44].find((ele,index)=>{alert('the index is = ' + index); return ele >= 15;})); // 130
         if(this.siteNav.isEmpty()){
@@ -91,10 +93,10 @@ export class SiteNavService{
         //alert(declarations.length);
        // let moduleImports = annotations[0].imports;
        if(annotations[0].hasOwnProperty('imports')){
-            let moduleImports = annotations[0].imports;
+           // let moduleImports = annotations[0].imports;
             // console.log('moduleimports within if statement ...');
             // console.log(moduleImports);
-            this.findComponents(moduleImports);
+           // this.findComponents(moduleImports);
        }
        for(let i = 0; i < declarations.length; ++i){
           
@@ -118,21 +120,51 @@ export class SiteNavService{
         //alert('here' + componentObj);
         return componentObj;
     }
-    findComponents(obj: Array){
-        // var annotations: DecoratorFactory = Reflect.getMetadata('annotations', obj);
-        console.log('findComponents() ...');
-        console.log(obj);
-        // if(annotations[0].hasOwnProperty('imports')){
-            console.log('THE BOYS ARE  HERE, THE BOYS ARE QUEER...' + obj.length)
-            for(var i = 0; i < obj.length; i++){
-                console.log('findComponents() ...');
-                console.log(obj[i]);
-            }
+    // findComponents(obj: Array){
+    //     // var annotations: DecoratorFactory = Reflect.getMetadata('annotations', obj);
+    //     console.log('findComponents() ...');
+    //     console.log(obj);
+    //     // if(annotations[0].hasOwnProperty('imports')){
+    //         console.log('THE BOYS ARE  HERE, THE BOYS ARE QUEER...' + obj.length)
+    //         for(var i = 0; i < obj.length; i++){
+    //             console.log('findComponents() ...');
+    //             console.log(obj[i]);
+    //         }
             
-        // }
-    }
+    //     // }
+    // }
     getAllComponents(){
-        
+        let annotations: DecoratorFactory = Reflect.getMetadata('annotations', AppModule);
+       
+        if(annotations[0].hasOwnProperty('declarations')){
+            this.componentsArr = annotations[0].declarations);
+        }
+        if(annotations[0].hasOwnProperty('imports')){
+            
+            let imports = annotations[0].imports;
+            for(let i = 0; i < imports.length; i++){
+             //   alert(imports[i]);
+                var impAnnotations = Reflect.getMetadata('annotations', imports[i]);
+
+                if(impAnnotations !== undefined){
+                    if(impAnnotations[0].hasOwnProperty('declarations') && impAnnotations[0].declarations !== undefined){
+                        console.log('impAnnotationsanni ...' + imports[i].name);
+                        console.log(impAnnotations[0]); 
+                       // alert(impAnnotations[0].declarations instanceof Object);
+                       impAnnotations[0].declarations.forEach(function(item){
+                           this.componentsArr.push(item);
+                       }.bind(this));
+                     //   this.componentsArr.concat(impAnnotations[0].declarations);
+
+                    }
+                    //impAnnotations[0].declarations !== undefined && 
+
+                }
+
+            }
+        }
+        console.log('getAllComponents() = ');
+        console.log(this.componentsArr);
     }
     // prepareNav(){
     //     return [

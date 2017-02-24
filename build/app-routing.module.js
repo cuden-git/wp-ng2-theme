@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-//import { Http } from '@angular/http';
 var site_nav_service_1 = require('./site-nav.service');
 var home_component_1 = require('./home/home.component');
 var not_found_component_1 = require('./not-found.component');
@@ -34,59 +33,23 @@ var routes = [
         component: not_found_component_1.NotFoundComponent
     }
 ];
-// new GetRoutes.showRoutes();
-console.log('const routes = ');
-console.log(routes);
+void 0;
+void 0;
 var AppRouting = (function () {
     function AppRouting(router, siteNav) {
         var _this = this;
         this.router = router;
         this.siteNav = siteNav;
-        // alert('AppRouting');
         this.siteNav.getNav()
             .then(function (data) {
-            alert('data = ' + data);
             _this.lateRoutes = _this.siteNav.createRoutes()
                 .then(function (data) { _this.router.resetConfig(data.concat(routes)); });
         });
-        // this.lateRoutes = this.siteNav.createRoutes()
-        // .then( 
-        //   data => {
-        //       alert('Approuting Promise = ' + data);
-        //           // console.log('from app routing moduleross = ');
-        //           // console.log(this.lateRoutes.concat(routes));
-        //           // console.log("this.siteNav.siteRoutes");
-        //           // console.log(this.siteNav.siteRoutes);
-        //           //this.router.resetConfig(data.concat(routes));
-        //   }
-        // );
-        // this.lateRoutes = this.siteNav.createRoutes();
-        //this.siteNav.siteRoutes;
-        // this.lateRoutes = [{
-        //   path: 'projects',
-        //   component: HomeComponent
-        // }];
-        // alert("this.lateRoutes = " + this.lateRoutes + " / this.siteNav.siteRoutes = " + this.siteNav.siteRoutes);
     }
-    // routes: Routes;
-    // constructor(private _navService: SiteNavService){
-    //     this.routes = this._navService.prepareNav();
-    // }
     AppRouting.prototype.ngOnInit = function () {
-        // alert('nng on init');
     };
     AppRouting = __decorate([
         core_1.NgModule({
-            /*providers: [{
-                provide: APP_INITIALIZER,
-                useFactory: (siteNav: SiteNavService) => {
-                const routes: Routes = siteNav.prepareNav();
-                 return function(){
-                     
-                   return siteNav.prepareNav();
-                  }
-                }
-            }],*/
             imports: [router_1.RouterModule.forRoot(routes)],
             exports: [router_1.RouterModule]
         }), 
@@ -95,4 +58,3 @@ var AppRouting = (function () {
     return AppRouting;
 }());
 exports.AppRouting = AppRouting;
-//# sourceMappingURL=app-routing.module.js.map
