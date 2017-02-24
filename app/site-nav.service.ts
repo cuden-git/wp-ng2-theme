@@ -16,8 +16,8 @@ export class SiteNavService{
         private _navUrl = wpJsVars.ajaxUrl+'?action=ajax_site_nav';
    // private _navUrl = "http://jsonplaceholder.typicode.com/posts";//wpJsVars.ajaxUrl+'?action=ajax_site_nav';
     siteNav;
-    siteRoutes: Array;
-    componentsArr: Array;
+    siteRoutes: Array<any>;
+    componentsArr: Array<any>;
 
    constructor(private _http: Http){
    //    alert('SiteNavService');
@@ -72,42 +72,41 @@ export class SiteNavService{
                 }
             }
        }
-       //alert('bingo otchoa');
       console.log('site routes = ');
       console.log(this.siteRoutes);
      let obs = Observable.of(this.siteRoutes).toPromise();
-      console.log('the observable is = ');
-      console.log(obs);
-      console.log('console object is = ');
-      console.log(console);
+    //   console.log('the observable is = ');
+    //   console.log(obs);
+    //   console.log('console object is = ');
+    //   console.log(console);
         return obs;
         //return this.siteRoutes;
     }
     getRouteComponent(componentName: String){
-        var componentObj;
-        var annotations: DecoratorFactory = Reflect.getMetadata('annotations', AppModule);
-        console.log('annotations = ');
-        console.log(annotations);
-        let declarations = annotations[0].declarations;
+       // var componentObj;
+        // var annotations: DecoratorFactory = Reflect.getMetadata('annotations', AppModule);
+        // console.log('annotations = ');
+        // console.log(annotations);
+        // let declarations = annotations[0].declarations;
 
         //alert(declarations.length);
        // let moduleImports = annotations[0].imports;
-       if(annotations[0].hasOwnProperty('imports')){
+    //    if(annotations[0].hasOwnProperty('imports')){
            // let moduleImports = annotations[0].imports;
             // console.log('moduleimports within if statement ...');
             // console.log(moduleImports);
            // this.findComponents(moduleImports);
-       }
-       for(let i = 0; i < declarations.length; ++i){
+      // }
+    //    for(let i = 0; i < declarations.length; ++i){
           
-          if(declarations[i].name === componentName){
-              //alert('declarations[i] = ' + declarations[i].name);
-              componentObj = declarations[i];
-              break;
-          }else{
-              componentObj = null;
-          }
-       }
+    //       if(declarations[i].name === componentName){
+    //           //alert('declarations[i] = ' + declarations[i].name);
+    //           componentObj = declarations[i];
+    //           break;
+    //       }else{
+    //           componentObj = null;
+    //       }
+    //    }
         // declarations.forEach((arrItem) => {
         //     if(arrItem.name === componentName){
         //         alert("we have a god damned match / " + arrItem);
@@ -117,8 +116,9 @@ export class SiteNavService{
         //         componentObj = null;
         //     }
         // });
-        //alert('here' + componentObj);
-        return componentObj;
+        alert(this.componentsArr.find(item=> { return (item.name === componentName)? item : false }));
+        return this.componentsArr.find(item=> { return (item.name === componentName)? item : false });
+      //  return componentObj;
     }
     // findComponents(obj: Array){
     //     // var annotations: DecoratorFactory = Reflect.getMetadata('annotations', obj);

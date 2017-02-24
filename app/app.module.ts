@@ -31,6 +31,7 @@ import { RightColComponent} from './right-col.component';
         useFactory: (config: SiteVarsService,siteNav: SiteNavService) => {
          return function(){
             return config.getVars(),
+            
               siteNav.getNav()/**/;
           }
         },

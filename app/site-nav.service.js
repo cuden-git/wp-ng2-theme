@@ -71,37 +71,39 @@ var SiteNavService = (function () {
                 }
             }
         }
-        //alert('bingo otchoa');
         console.log('site routes = ');
         console.log(this.siteRoutes);
         var obs = Rx_1.Observable.of(this.siteRoutes).toPromise();
-        console.log('the observable is = ');
-        console.log(obs);
-        console.log('console object is = ');
-        console.log(console);
+        //   console.log('the observable is = ');
+        //   console.log(obs);
+        //   console.log('console object is = ');
+        //   console.log(console);
         return obs;
         //return this.siteRoutes;
     };
     SiteNavService.prototype.getRouteComponent = function (componentName) {
-        var componentObj;
-        var annotations = Reflect.getMetadata('annotations', app_module_1.AppModule);
-        console.log('annotations = ');
-        console.log(annotations);
-        var declarations = annotations[0].declarations;
+        // var componentObj;
+        // var annotations: DecoratorFactory = Reflect.getMetadata('annotations', AppModule);
+        // console.log('annotations = ');
+        // console.log(annotations);
+        // let declarations = annotations[0].declarations;
         //alert(declarations.length);
         // let moduleImports = annotations[0].imports;
-        if (annotations[0].hasOwnProperty('imports')) {
-        }
-        for (var i = 0; i < declarations.length; ++i) {
-            if (declarations[i].name === componentName) {
-                //alert('declarations[i] = ' + declarations[i].name);
-                componentObj = declarations[i];
-                break;
-            }
-            else {
-                componentObj = null;
-            }
-        }
+        //    if(annotations[0].hasOwnProperty('imports')){
+        // let moduleImports = annotations[0].imports;
+        // console.log('moduleimports within if statement ...');
+        // console.log(moduleImports);
+        // this.findComponents(moduleImports);
+        // }
+        //    for(let i = 0; i < declarations.length; ++i){
+        //       if(declarations[i].name === componentName){
+        //           //alert('declarations[i] = ' + declarations[i].name);
+        //           componentObj = declarations[i];
+        //           break;
+        //       }else{
+        //           componentObj = null;
+        //       }
+        //    }
         // declarations.forEach((arrItem) => {
         //     if(arrItem.name === componentName){
         //         alert("we have a god damned match / " + arrItem);
@@ -111,8 +113,9 @@ var SiteNavService = (function () {
         //         componentObj = null;
         //     }
         // });
-        //alert('here' + componentObj);
-        return componentObj;
+        alert(this.componentsArr.find(function (item) { return (item.name === componentName) ? item : false; }));
+        return this.componentsArr.find(function (item) { return (item.name === componentName) ? item : false; });
+        //  return componentObj;
     };
     // findComponents(obj: Array){
     //     // var annotations: DecoratorFactory = Reflect.getMetadata('annotations', obj);

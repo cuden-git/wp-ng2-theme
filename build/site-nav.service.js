@@ -56,30 +56,11 @@ var SiteNavService = (function () {
         void 0;
         void 0;
         var obs = Rx_1.Observable.of(this.siteRoutes).toPromise();
-        void 0;
-        void 0;
-        void 0;
-        void 0;
         return obs;
     };
     SiteNavService.prototype.getRouteComponent = function (componentName) {
-        var componentObj;
-        var annotations = Reflect.getMetadata('annotations', app_module_1.AppModule);
         void 0;
-        void 0;
-        var declarations = annotations[0].declarations;
-        if (annotations[0].hasOwnProperty('imports')) {
-        }
-        for (var i = 0; i < declarations.length; ++i) {
-            if (declarations[i].name === componentName) {
-                componentObj = declarations[i];
-                break;
-            }
-            else {
-                componentObj = null;
-            }
-        }
-        return componentObj;
+        return this.componentsArr.find(function (item) { return (item.name === componentName) ? item : false; });
     };
     SiteNavService.prototype.getAllComponents = function () {
         var annotations = Reflect.getMetadata('annotations', app_module_1.AppModule);
