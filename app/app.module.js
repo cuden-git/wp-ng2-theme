@@ -15,6 +15,8 @@ var app_component_1 = require('./app.component');
 var site_nav_service_1 = require('./site-nav.service');
 var site_vars_service_1 = require('./site-vars.service');
 var post_service_1 = require('./post.service');
+var post_meta_service_1 = require('./post-meta.service');
+var carousel_service_1 = require('./carousel.service');
 var site_header_component_1 = require('./site-header.component');
 var site_nav_component_1 = require('./site-nav.component');
 var site_footer_component_1 = require('./site-footer.component');
@@ -41,7 +43,7 @@ var AppModule = (function () {
                 home_module_1.HomeModule
             ],
             declarations: [app_component_1.AppComponent, site_header_component_1.SiteHeaderComponent, site_nav_component_1.SiteNavComponent, site_footer_component_1.SiteFooterComponent, not_found_component_1.NotFoundComponent, services_component_1.ServicesComponent, right_col_component_1.RightColComponent],
-            providers: [site_nav_service_1.SiteNavService, site_vars_service_1.SiteVarsService, post_service_1.PostService, {
+            providers: [site_nav_service_1.SiteNavService, site_vars_service_1.SiteVarsService, carousel_service_1.CarouselService, post_service_1.PostService, post_meta_service_1.PostMetaService, {
                     provide: core_1.APP_INITIALIZER,
                     useFactory: function (config, siteNav) {
                         return function () {

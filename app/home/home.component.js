@@ -10,20 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_animations_1 = require('../router.animations');
-var app_module_1 = require('../app.module');
 var HomeComponent = (function () {
     function HomeComponent() {
-        this.routeAnimation = true;
-        this.class = "component";
         //alert('home'+ Component);
         //  alert(Component);
         // console.log('AppModule ng = ');
         // console.log(AppModule['NgModule'];
         // console.log('AppModule.declarationsololol');
         // console.log(AppModule['declarations']);
-        var annotations = Reflect.getMetadata('annotations', app_module_1.AppModule);
-        console.log(annotations);
+        //  let annotations: DecoratorFactory = Reflect.getMetadata('annotations', AppModule);
+        //  console.log(annotations);
         //alert(annotations[0].declarations[0].name);        
+        this.routeAnimation = true;
+        this.class = "component";
     }
     __decorate([
         core_1.HostBinding('@routerTransition'), 

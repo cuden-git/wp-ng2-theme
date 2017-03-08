@@ -2,6 +2,8 @@
 require_once('../../../wp-load.php');
 //echo 'here';
 //print_r(get_posts());
+//ajax_carousel();
+//ajax_post_meta();
 ?>
 <?php //require get_template_directory()."/app/index.html"; ?>
 <html>

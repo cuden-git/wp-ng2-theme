@@ -7,6 +7,8 @@ import { AppComponent }   from './app.component';
 import { SiteNavService } from './site-nav.service';
 import { SiteVarsService } from './site-vars.service';
 import { PostService } from './post.service';
+import { PostMetaService } from './post-meta.service';
+import { CarouselService } from './carousel.service';
 
 import { SiteHeaderComponent } from './site-header.component';
 import { SiteNavComponent } from './site-nav.component';
@@ -26,12 +28,12 @@ import { RightColComponent} from './right-col.component';
       HomeModule
    ],
   declarations: [ AppComponent, SiteHeaderComponent, SiteNavComponent, SiteFooterComponent, /*HomeComponent,*/ NotFoundComponent, ServicesComponent, RightColComponent ],
-  providers: [ SiteNavService, SiteVarsService,PostService,{
+  providers: [ SiteNavService, SiteVarsService,CarouselService,PostService,PostMetaService,{
         provide: APP_INITIALIZER,
         useFactory: (config: SiteVarsService,siteNav: SiteNavService) => {
          return function(){
             return config.getVars(),
-            
+
               siteNav.getNav()/**/;
           }
         },

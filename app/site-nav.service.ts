@@ -116,7 +116,6 @@ export class SiteNavService{
         //         componentObj = null;
         //     }
         // });
-        alert(this.componentsArr.find(item=> { return (item.name === componentName)? item : false }));
         return this.componentsArr.find(item=> { return (item.name === componentName)? item : false });
       //  return componentObj;
     }

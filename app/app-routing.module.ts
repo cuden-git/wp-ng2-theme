@@ -11,7 +11,8 @@ import { ServicesComponent } from './services.component';
 const routes: Routes = [
   {
   path: 'home',
-  component: HomeComponent
+  component: HomeComponent,
+  data: {postId: 9}
   },
   {
     path: 'services',
@@ -61,7 +62,10 @@ export class AppRouting implements OnInit{
        //  alert('data = ' + data);
          this.lateRoutes = this.siteNav.createRoutes()
          .then(
-            (data) => { this.router.resetConfig(data.concat(routes)); }
+            (data) => { this.router.resetConfig(data.concat(routes));
+              console.log('this.router.config');
+              console.log(this.router.config) ;
+            }
          );
         
        }

@@ -43,7 +43,11 @@ var AppRouting = (function () {
         this.siteNav.getNav()
             .then(function (data) {
             _this.lateRoutes = _this.siteNav.createRoutes()
-                .then(function (data) { _this.router.resetConfig(data.concat(routes)); });
+                .then(function (data) {
+                _this.router.resetConfig(data.concat(routes));
+                void 0;
+                void 0;
+            });
         });
     }
     AppRouting.prototype.ngOnInit = function () {

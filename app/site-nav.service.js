@@ -113,7 +113,6 @@ var SiteNavService = (function () {
         //         componentObj = null;
         //     }
         // });
-        alert(this.componentsArr.find(function (item) { return (item.name === componentName) ? item : false; }));
         return this.componentsArr.find(function (item) { return (item.name === componentName) ? item : false; });
         //  return componentObj;
     };

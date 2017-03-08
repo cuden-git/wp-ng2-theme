@@ -1,9 +1,11 @@
 import { Component, HostBinding } from '@angular/core';
 import { routerTransition } from '../router.animations';
 //import { RightColComponent } from '../right-col.component';
-import { HomeModule } from './home.module';
-import { AppModule } from '../app.module';
+// import { HomeModule } from './home.module';
+// import { AppModule } from '../app.module';
+import { HomePanel } from './home-panel.component';
 import { NgModule, APP_INITIALIZER }      from '@angular/core';
+
 @Component({
     moduleId: module.id,
     templateUrl: `home.component.html?v=${new Date().getTime()}`,
@@ -19,8 +21,8 @@ export class HomeComponent{
         // console.log(AppModule['NgModule'];
         // console.log('AppModule.declarationsololol');
         // console.log(AppModule['declarations']);
-     let annotations: DecoratorFactory = Reflect.getMetadata('annotations', AppModule);
-     console.log(annotations);
+    //  let annotations: DecoratorFactory = Reflect.getMetadata('annotations', AppModule);
+    //  console.log(annotations);
      //alert(annotations[0].declarations[0].name);        
 
     }

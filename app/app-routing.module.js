@@ -18,7 +18,8 @@ var services_component_1 = require('./services.component');
 var routes = [
     {
         path: 'home',
-        component: home_component_1.HomeComponent
+        component: home_component_1.HomeComponent,
+        data: { postId: 9 }
     },
     {
         path: 'services',
@@ -47,7 +48,11 @@ var AppRouting = (function () {
             .then(function (data) {
             //  alert('data = ' + data);
             _this.lateRoutes = _this.siteNav.createRoutes()
-                .then(function (data) { _this.router.resetConfig(data.concat(routes)); });
+                .then(function (data) {
+                _this.router.resetConfig(data.concat(routes));
+                console.log('this.router.config');
+                console.log(_this.router.config);
+            });
         });
         // this.lateRoutes = this.siteNav.createRoutes()
         // .then( 

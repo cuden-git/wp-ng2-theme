@@ -9,15 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var home_component_1 = require('./home.component');
+var home_panel_component_1 = require('./home-panel.component');
 var HomeModule = (function () {
     function HomeModule() {
     }
     HomeModule = __decorate([
         core_1.NgModule({
-            imports: [],
-            declarations: [home_component_1.HomeComponent /*, RightColComponent*/],
-            exports: [home_component_1.HomeComponent /*, RightColComponent*/]
+            imports: [common_1.CommonModule],
+            declarations: [home_component_1.HomeComponent, home_panel_component_1.HomePanel /*, RightColComponent*/],
+            exports: [home_component_1.HomeComponent, home_panel_component_1.HomePanel /*, RightColComponent*/]
         }), 
         __metadata('design:paramtypes', [])
     ], HomeModule);

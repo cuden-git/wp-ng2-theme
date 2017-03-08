@@ -59,7 +59,6 @@ var SiteNavService = (function () {
         return obs;
     };
     SiteNavService.prototype.getRouteComponent = function (componentName) {
-        void 0;
         return this.componentsArr.find(function (item) { return (item.name === componentName) ? item : false; });
     };
     SiteNavService.prototype.getAllComponents = function () {

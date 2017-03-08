@@ -142,4 +142,71 @@ function ajax_page_content(){
 }
 add_action( 'wp_ajax_nopriv_ajax_page_content', 'ajax_page_content' );
 add_action( 'wp_ajax_ajax_page_content', 'ajax_page_content' );
+
+
+/* carousel */
+ function ajax_carousel(){
+    // echo json_encode(array('post_title'=>'testuba', 'post_content'=>'test luba'));
+    // wp_die();
+     $carousel_id = 234;//$_GET['carouselId'];
+     $show_mobile_alt = (isset($_GET['showMobileAlt']))? $_GET['showMobileAlt'] : false ;
+     $slider = unserialize(get_post_meta ( $carousel_id, 'slider_data',true));
+     $index = 0;
+     //print_r($slider);
+
+     //implode(' ',$classes);
+
+     foreach($slider as $key=>$val){ 
+        $img_src = wp_get_attachment_image_src ( $key, 'full');
+        // $slide_link_btn = (!empty($slider[$key]['url']))? '<span class="btnSlab">VIEW MORE</span>' : '' ;
+         $slider[$key]['src'] = $img_src[0];
+         $slider_arr[] = array(
+             'id' => $slider[$key]['id'],
+             'src' => $img_src[0],
+             'text' => $slider[$key]['text'],
+             'title' => $slider[$key]['title'],
+             'url' => $slider[$key]['url'],
+        );
+        // if($index == 0){ 
+		//  	$classes = 'item active';
+			// if($showMobileAlt){
+			// 	if($slider[$key]['url']){
+			// 		$mobile_img['url'] = $slider[$key]['url'];
+			// 	}else{
+			// 		$mobile_img['url'] = '#';
+			// 	}
+			// 	$mobile_img['title'] = $slider[$key]['title'];
+			// 	$mobile_img['src'] = $img_src[0];
+			// 	$mobile_img['text'] = $slider[$key]['text'];
+			// }
+		// }else{ 
+		// 	$classes = 'item'; 
+		// }
+
+        ++$index;
+     }
+    //       print_r($slider);
+    //  exit();
+   echo json_encode($slider_arr);
+      die();
+ }
+add_action( 'wp_ajax_nopriv_ajax_carousel', 'ajax_carousel' );
+add_action( 'wp_ajax_ajax_carousel', 'ajax_carousel' );
+
+ /* Post meta data */
+ function ajax_post_meta(){
+    $temp_var = (isset($_GET['metaKey']))? json_decode(stripslashes($_GET['metaKey'])) : null;
+    $temp_arr = array('test_var'=>$temp_var);
+    echo '<h1> temp_vars = '.stripslashes($_GET['metaKey']).'</h1>';
+    print_r($temp_var);
+    echo'her;';
+    foreach($temp_var as $key=>$val){
+        echo '<h1>'.get_field($val).'</h1>';
+    }
+  //  echo(json_encode($temp_arr));
+   // echo(json_encode(array('bebo'=>'rebo')));
+    die();
+ }
+add_action( 'wp_ajax_nopriv_ajax_post_meta', 'ajax_post_meta' );
+add_action( 'wp_ajax_ajax_post_meta', 'ajax_post_meta' );
 ?>
