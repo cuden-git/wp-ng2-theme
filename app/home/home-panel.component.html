@@ -1,0 +1,17 @@
+<ul class="carousel-inner" role="listbox">
+    <li *ngFor="let item of carouselItems; let i = index" [ngClass]="{item: true,active: i === 0}" [attr.hidden]="true">
+        <a href="{{(item.url === '') ? '#' : item.url }}" title="">
+            <img src="{{item.src}}" alt="">
+            <div class="caption">
+                <span class="bg"></span>
+                <h6 class="title">{{item.title}} {{i}}</h6>
+                <p></p>
+            </div>
+        </a>
+    </li>
+
+</ul>
+<ol class="carousel-indicators">
+<li *ngFor="let item of carouselItems; let i = index" [ngClass]="{active: i === 0}" data-target="#homeCarousel"></li>
+<!-- data-slide-to="{{i}}"-->
+</ol>
